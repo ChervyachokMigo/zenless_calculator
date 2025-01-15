@@ -9,7 +9,7 @@ module.exports = {
 		{ level: 60, value: 858 },
 		{ level: 70, value: 858 },
 	],
-	RES: {},
+	RES: { },
 	RES_reduction: { frost: 0.2, ether: 0.2 },
 	stun_multiplier: 2
 }

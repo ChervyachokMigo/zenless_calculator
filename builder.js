@@ -131,15 +131,15 @@ module.exports = {
 
 				//log all
 				
-                    console.log('base_damage:', base_damage);
-                    console.log('damage_bonus_multiplier:', damage_bonus_multiplier);
-                    console.log('defense_multiplier:', defense_multiplier);
-                    console.log('resistance_multiplier:', resistance_multiplier);
-                    console.log('damage_taken_multiplier:', damage_taken_multiplier);
-                    console.log('anomaly_proficiency_multiplier:', anomaly_proficiency_multiplier);
-                    console.log('anomaly_level_multiplier:', anomaly_level_multiplier);
-                    console.log('stun_multiplier:', stun_multiplier);
-                    console.log('result:', result);
+                    // console.log('base_damage:', base_damage);
+                    // console.log('damage_bonus_multiplier:', damage_bonus_multiplier);
+                    // console.log('defense_multiplier:', defense_multiplier);
+                    // console.log('resistance_multiplier:', resistance_multiplier);
+                    // console.log('damage_taken_multiplier:', damage_taken_multiplier);
+                    // console.log('anomaly_proficiency_multiplier:', anomaly_proficiency_multiplier);
+                    // console.log('anomaly_level_multiplier:', anomaly_level_multiplier);
+                    // console.log('stun_multiplier:', stun_multiplier);
+                    // console.log('result:', result);
                 
 
 				debug++;

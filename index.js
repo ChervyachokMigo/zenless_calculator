@@ -1,6 +1,7 @@
 const { set_stats, set_charge, set_stan, set_mindscape, set_agent, calculate_skills, set_skills_levels } = require("./atacker_stats");
 const compare_damage = require("./compare_damage");
 const crit_mode = require("./crit_mode");
+const print_result = require("./print_result");
 const { set_target } = require("./target_stats");
 
 const target_stats = set_target('hati', 70);
@@ -18,31 +19,40 @@ const target_stats = set_target('hati', 70);
 
 //2969 atk
 
+
+
+
 //sadgod
-// set_stats({
-// 	level: 60,
-// 	ATK: 2969,
-// 	PEN_ratio: 0,
-// 	PEN: 0,
-// 	AP: 238,
-// 	crit_mode: crit_mode.average,
-// 	crit_chance: 0.61,
-// 	crit_damage: 2.42,
-// 	total_damage_bonus: 0,
-// 	atribute_bonus_damage: {
-// 		frost: 0.3
-// 	}
-// });
+set_stats({
+	level: 60,
+	ATK: 2969,
+	PEN_ratio: 0,
+	PEN: 0,
+	AP: 238,
+	crit_mode: crit_mode.force,
+	crit_chance: 0.61,
+	crit_damage: 2.42,
+	total_damage_bonus: 0,
+	atribute_bonus_damage: {
+		frost: 0.3
+	}
+});
 
-// set_charge(0);
-// set_stan(false);
-// set_mindscape(2);
-// set_agent('miyabi');
-// set_skills_levels([12, 12, 12, 12, 12]);
+set_charge(0);
+set_stan(false);
+set_mindscape(2);
+set_agent('miyabi');
+set_skills_levels([12, 12, 12, 12, 12]);
 
-// const result_1 = calculate_skills(target_stats);
+const result_1 = calculate_skills(target_stats);
+print_result(result_1)
+
+
+
+
 
 //livo4
+
 // set_stats({
 // 	level: 60,
 // 	ATK: 2669,
@@ -61,7 +71,12 @@ const target_stats = set_target('hati', 70);
 
 // const result_1 = calculate_skills(target_stats);
 
+
+
+
+
 //nnaoi frost
+
 // set_stats({
 // 	level: 60,
 // 	ATK: 2489,
@@ -85,7 +100,11 @@ const target_stats = set_target('hati', 70);
 
 // const result_1 = calculate_skills(target_stats);
 
+
+
+
 //nnaoi damage
+
 // set_stats({
 // 	level: 60,
 // 	ATK: 2668,
@@ -106,6 +125,9 @@ const target_stats = set_target('hati', 70);
 // set_skills_levels([12, 9, 12, 12, 12]);
 
 // const result_2 = calculate_skills(target_stats);
+
+
+
 
 
 //akamiru
@@ -133,4 +155,4 @@ const target_stats = set_target('hati', 70);
 // const result_2 = calculate_skills(target_stats);
 
 
-compare_damage(result_1, result_2)
+// compare_damage(result_1, result_2)
