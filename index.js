@@ -7,6 +7,9 @@ const { set_target } = require("./target_stats");
 const print_result = require("./print_result");
 const compare_damage = require("./compare_damage");
 const atribute_damage = require("./atribute_damage");
+const set_status_effects = require("./set_status_effects");
+const crit_mode = require("./crit_mode");
+const { levels_12, levels_14 } = require("./skill_levels_preset");
 
 const target_stats = set_target('hati', 70);
 
@@ -179,29 +182,32 @@ set_stats({
     }
 });
 
-set_agent({ name: 'miyabi', mindscape: 2, skill_levels: [ 12, 12, 12, 12, 12 ]});
+set_agent({ name: 'miyabi', mindscape: 1, skill_levels: levels_12});
 
-const res_1 = atribute_damage.calc(target_stats);
+//const res_1 = atribute_damage.calc(target_stats);
+
+const result_1 = calculate_skill_damage(target_stats);
+
 
 set_stats({
-	ATK: 2669,
-	AP: 310,
-	crit_chance: 0.70,
-	crit_damage: 1.38,
-	atribute_bonus_damage: {
+	ATK: 2969,
+	AP: 238,
+	crit_chance: 0.61,
+	crit_damage: 1.62,
+    atribute_bonus_damage: {
         frost: 0.3
     }
 });
 
-set_agent({ name: 'miyabi', mindscape: 0, skill_levels: [ 12, 12, 12, 12, 12 ]});
+set_agent({ name: 'miyabi', mindscape: 2, skill_levels: levels_12});
 
-const res_2 = atribute_damage.calc(target_stats);
-
-atribute_damage.compare(res_1, res_2)
-
-// const result_2 = calculate_skill_damage(target_stats);
+//const res_2 = atribute_damage.calc(target_stats);
 
 
-// compare_damage(result_1, result_2)
+const result_2 = calculate_skill_damage(target_stats);
+
+//atribute_damage.compare(res_1, res_2)
+
+compare_damage(result_1, result_2)
 
 

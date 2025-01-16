@@ -16,7 +16,7 @@ module.exports = {
         agent_stats.PEN_ratio = PEN_ratio ? PEN_ratio : 0;
         agent_stats.PEN = PEN ? PEN : 0;
         agent_stats.AP = AP;
-		agent_stats.crit_mode = crit_mode ? crit_mode : crit_modes.average;
+		agent_stats.crit_mode = typeof crit_mode !== 'undefined' ? crit_mode : crit_modes.average;
         agent_stats.crit_chance = crit_chance;
         agent_stats.crit_damage = crit_damage;
 		agent_stats.total_damage_bonus = total_damage_bonus ? total_damage_bonus : 0;
@@ -34,7 +34,9 @@ module.exports = {
 		agent_stats.stun = is_active;
 	},
 
-	select_mindscape: (level) => agent_stats.mindscape_level = level,
+	select_mindscape: (level) => {
+		agent_stats.mindscape_level = level
+	},
 
 	select_agent: (name) => {
 		const agents = readdirSync('./agent_data').map( v => v.replace('.js', ''));
