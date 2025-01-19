@@ -1,6 +1,6 @@
-const crit_mode = require("./crit_mode");
-const { get_anomaly_type_multiplier, get_element_name_by_id } = require("./elements");
-const { get_target } = require("./target_stats");
+const crit_mode = require("./consts/crit_mode");
+const { get_anomaly_type_multiplier, get_element_name_by_id } = require("./consts/elements");
+const { get_target } = require("./tools/target");
 
 const damage_types = {
 	standart: 1,

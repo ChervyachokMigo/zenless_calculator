@@ -1,19 +1,21 @@
 const { readdirSync } = require('fs');
+const path = require('path');
+
 
 let target = null;
 
+const enemies_path = path.join( 'consts', 'enemies');
+
 const _this = module.exports = {
 
-	target_list: () => {
-		return readdirSync('./enemies').map( v => v.replace('.js', ''));
-	},
-
 	set_target: (name, level, effects = {}) => {
-		if (_this.target_list().indexOf(name) === -1) {
+		const targets = readdirSync(enemies_path).map( v => v.replace('.js', ''));
+		
+		if (targets.indexOf(name) === -1) {
 			throw new Error('unknown target');
 		}
 
-		const stats = require('./enemies/'+ name);
+		const stats = require( path.join( '..', enemies_path, name ));
 		let DEF = stats.DEF.find( v => v.level === level);
 		if (!DEF) {
 			throw new Error('DEF not found');
@@ -37,5 +39,6 @@ const _this = module.exports = {
 			...effects
 		}
 	},
+	
 	get_target: () => target,
 }

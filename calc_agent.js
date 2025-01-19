@@ -1,13 +1,14 @@
-const obj_add_or_modify = require("../obj_add_or_modify");
-const { get_stats, get_agent_data } = require("../atacker_stats");
-const { calculate_damage, damage_types } = require("../builder");
-const { get_element_name_by_id, is_atribute_in_obj } = require("../elements");
-const get_agent_stats = require("../get_agent_stats");
-const select_skill = require("../select_skill");
-const skill_name_generator = require("../skill_name_generator");
-const update_agent_stats = require("../update_agent_stats");
-const { skill_basic_attack, skill_basic_attack_charge, skill_ex_special, skill_chain_attack, skill_ultimate } = require("../skill_type");
-const { stat_element_type, stat_ability_multiplier, stat_damage_type, stat_total_damage_bonus } = require("../stat_name");
+const obj_add_or_modify = require("./tools/obj_add_or_modify");
+const { get_stats, get_agent_data } = require("./tools/atacker_stats");
+const { calculate_damage, damage_types } = require("./builder");
+const { get_element_name_by_id, is_atribute_in_obj } = require("./consts/elements");
+const get_agent_stats = require("./tools/get_agent_stats");
+const select_skill = require("./tools/select_skill");
+const skill_name_generator = require("./tools/skill_name_generator");
+const update_agent_stats = require("./tools/update_agent_stats");
+const { skill_basic_attack, skill_basic_attack_charge, skill_ex_special, skill_chain_attack, skill_ultimate } = require("./consts/skill_type");
+const { stat_element_type, stat_ability_multiplier, stat_damage_type, stat_total_damage_bonus } = require("./consts/stat_name");
+const { add_results } = require("./tools/results");
 
 module.exports = ( ) => {
 	
@@ -58,5 +59,6 @@ module.exports = ( ) => {
 		results.push(skill_results);
 	}
 
-	return results;
+	add_results(results);
+
 }

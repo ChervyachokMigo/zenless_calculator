@@ -1,13 +1,13 @@
 const { readdirSync } = require("fs");
+const path = require("path");
 
-const { calculate_damage, damage_types } = require("./builder");
-const select_skill = require("./select_skill");
-const { is_atribute_in_obj, get_element_name_by_id } = require("./elements");
-const skill_name_generator = require("./skill_name_generator");
-const crit_modes = require("./crit_mode");
+
+const crit_modes = require("../consts/crit_mode");
 
 let agent_data = null;
 let agent_stats = {};
+
+const agent_data_path = path.join('consts', 'agent_data');
 
 const _this = module.exports = {
 	set_stats: ({ level, ATK, PEN_ratio, PEN, AP, crit_chance, crit_damage, total_damage_bonus, crit_mode, atribute_bonus_damage, RES_ignore }) => {
@@ -40,7 +40,7 @@ const _this = module.exports = {
 	},
 
 	select_agent: (name) => {
-		const agents = readdirSync('./agent_data').map( v => v.replace('.js', ''));
+		const agents = readdirSync(agent_data_path).map( v => v.replace('.js', ''));
 
 		const founded_agent = agents.find( v => v === name);
         if (!founded_agent) {
@@ -48,7 +48,7 @@ const _this = module.exports = {
         }
 
 		agent_stats.name = name;
-		agent_data = require('./agent_data/'+ name);
+		agent_data = require( path.join( '..', agent_data_path, name ));
 	},
 
 	set_skills_levels: (levels) => {

@@ -1,5 +1,5 @@
 const { calclulate_pre_skill_damage } = require("./atacker_stats");
-const { element_type } = require("./elements");
+const { element_type } = require("./consts/elements");
 
 const _this = module.exports = {
 	calc: (target_stats) => {
