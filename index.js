@@ -1,4 +1,4 @@
-const { set_stats, calculate_skill_damage, calclulate_pre_skill_damage } = require("./atacker_stats");
+const { set_stats, set_stats_effect } = require("./atacker_stats");
 
 const set_agent = require("./set_agent");
 
@@ -10,8 +10,10 @@ const atribute_damage = require("./atribute_damage");
 const set_status_effects = require("./set_status_effects");
 const crit_mode = require("./crit_mode");
 const { levels_12, levels_14 } = require("./skill_levels_preset");
+const calculate_standart_damage = require("./calculate_standart_damage");
+const { compare_results } = require("./results");
 
-const target_stats = set_target('hati', 70);
+set_target('hati', 70);
 
 //first atack
 //1010
@@ -172,42 +174,162 @@ const target_stats = set_target('hati', 70);
 
 // const result_1 = calculate_skill_damage(target_stats);
 
-set_stats({
-	ATK: 2969,
-	AP: 238,
-	crit_chance: 0.61,
-	crit_damage: 1.62,
-    atribute_bonus_damage: {
-        frost: 0.3
-    }
-});
+// set_stats({
+// 	ATK: 2969,
+// 	AP: 238,
+// 	crit_chance: 0.61,
+// 	crit_damage: 1.62,
+// 	//crit_mode:crit_mode.force,
+// 	//crit_mode:crit_mode.none,
+//     atribute_bonus_damage: {
+//         frost: 0.3
+//     }
+// });
 
-set_agent({ name: 'miyabi', mindscape: 1, skill_levels: levels_12});
+// set_agent({ name: 'miyabi', mindscape: 2, skill_levels: levels_12});
+
+// set_stats_effect({ 
+// 	crit_chance: 0.15 + 0.12,
+// 	crit_damage: 0.80,
+// 	ATK: 0
+// });
 
 //const res_1 = atribute_damage.calc(target_stats);
 
-const result_1 = calculate_skill_damage(target_stats);
+// const result_1 = calculate_skill_damage(target_stats);
 
+
+// set_stats({
+// 	ATK: 3229,
+// 	AP: 238,
+// 	crit_chance: 0.53,
+// 	crit_damage: 1.572,
+// 	//crit_mode:crit_mode.force,
+// 	//crit_mode:crit_mode.none,
+//     atribute_bonus_damage: {
+//         frost: 0.3
+//     }
+// });
+
+// set_stats({
+// 	ATK: 3132,
+// 	AP: 238,
+// 	crit_chance: 0.482,
+// 	crit_damage: 1.524,
+// 	//crit_mode:crit_mode.force,
+// 	//crit_mode:crit_mode.none,
+//     atribute_bonus_damage: {
+//         frost: 0.3
+//     }
+// });
+
+// set_stats_effect({ 
+// 	crit_chance: 0.15 + 0.12,
+// 	crit_damage: 0.80,
+// 	ATK: 0
+// });
+
+// set_agent({ name: 'miyabi', mindscape: 2, skill_levels: levels_12});
+
+//const res_2 = atribute_damage.calc(target_stats);
+
+
+// const result_2 = calculate_skill_damage(target_stats);
+
+//atribute_damage.compare(res_1, res_2)
+
+// compare_damage(result_1, result_2)
+
+//livo4
+
+// set_stats({
+// 	level: 60,
+// 	ATK: 2669,
+// 	PEN_ratio: 0,
+// 	PEN: 0,
+// 	AP: 310,
+// 	crit_chance: 0.70,
+// 	crit_damage: 1.38
+// });
+
+// set_charge(0);
+// set_stan(false);
+// set_mindscape(1);
+// set_agent('miyabi');
+// set_skills_levels([12, 12, 12, 11, 11]);
+
+// const result_1 = calculate_skill_damage(target_stats);
+
+// set_stats({
+// 	ATK: 2523,
+// 	AP: 265,
+// 	crit_chance: 0.562+0.12,
+// 	crit_damage: 1.812,
+// 	//crit_mode:crit_mode.force,
+// 	//crit_mode:crit_mode.none,
+// 	atribute_bonus_damage: {
+//         frost: 0.3
+//     }
+// });
 
 set_stats({
-	ATK: 2969,
-	AP: 238,
-	crit_chance: 0.61,
-	crit_damage: 1.62,
-    atribute_bonus_damage: {
+	ATK: 3229,
+	AP: 265,
+	crit_chance: 0.53+0.12,
+	crit_damage: 1.572,
+	//crit_mode:crit_mode.force,
+	//crit_mode:crit_mode.none,
+	atribute_bonus_damage: {
         frost: 0.3
     }
 });
 
 set_agent({ name: 'miyabi', mindscape: 2, skill_levels: levels_12});
 
-//const res_2 = atribute_damage.calc(target_stats);
+calculate_standart_damage();
+
+// set_stats({
+// 	ATK: 2726,
+// 	AP: 292,
+// 	crit_chance: 0.674+0.12,
+// 	crit_damage: 1.476,
+// 	//crit_mode:crit_mode.force,
+// 	//crit_mode:crit_mode.none,
+// 	atribute_bonus_damage: {
+//         frost: 0.3
+//     }
+// });
+
+set_stats({
+	ATK: 3229,
+	AP: 265,
+	PEN: 100,
+	crit_chance: 0.53+0.12,
+	crit_damage: 1.572,
+	//crit_mode:crit_mode.force,
+	//crit_mode:crit_mode.none,
+	atribute_bonus_damage: {
+        frost: 0.3
+    }
+});
+
+set_agent({ name: 'miyabi', mindscape: 2, skill_levels: levels_12});
 
 
-const result_2 = calculate_skill_damage(target_stats);
+// set_stats_effect({ 
+// 	crit_chance: 0.15 + 0.12,
+// 	crit_damage: 0.80,
+// 	ATK: 0
+// });
 
-//atribute_damage.compare(res_1, res_2)
+calculate_standart_damage();
 
-compare_damage(result_1, result_2)
+//const res_1 = atribute_damage.calc(target_stats);
 
+//console.log(res_1)
 
+ //const result_1 = calculate_skill_damage(target_stats);
+ //console.log(result_1)
+ //print_result(result_1);
+
+compare_results();

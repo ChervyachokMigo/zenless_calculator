@@ -9,7 +9,7 @@ module.exports = {
 			},
 			second: {
 				damage_bonus: { 
-					basic_atack_kadzuhana_multiplier: 0.3
+					basic_attack_kadzuhana_multiplier: 0.3
 				},
 				crit_chance: 0.15
 			}
@@ -20,7 +20,7 @@ module.exports = {
 		}
 	},
 	skill: {
-		basic_atack:
+		basic_attack:
 			[
 				{ level: 11, stage: 1,
 					element_type: element_type.physical, ability_multiplier: 0.519 },
@@ -66,7 +66,7 @@ module.exports = {
 				{ level: 14, stage: 5,
 					element_type: element_type.frost, ability_multiplier: 2.824 },
 			],
-		basic_atack_charge:
+		basic_attack_charge:
 			[
 				{ level: 11, stage: 1,
 					element_type: element_type.frost, ability_multiplier: 8.687 },
@@ -106,7 +106,7 @@ module.exports = {
 				{ level: 14, stage: 2,
 					element_type: element_type.frost, ability_multiplier: 10.552 },
 			],
-		chain_atack:
+		chain_attack:
 			[
 				{ level: 11, stage: 1,
 					element_type: element_type.frost, ability_multiplier: 12.01 },

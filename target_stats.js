@@ -1,4 +1,6 @@
-const { readdirSync } = require('fs')
+const { readdirSync } = require('fs');
+
+let target = null;
 
 const _this = module.exports = {
 
@@ -26,7 +28,7 @@ const _this = module.exports = {
 			effects.damage_taken_reduction = 0;
 		}
 
-		return {
+		target =  {
 			level,
 			DEF,
 			RES: stats.RES,
@@ -34,5 +36,6 @@ const _this = module.exports = {
 			stun_multiplier: stats.stun_multiplier,
 			...effects
 		}
-	}
+	},
+	get_target: () => target,
 }

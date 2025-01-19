@@ -1,4 +1,1 @@
-module.exports = (skill_name, level, stage) => {
-	return `[${level} lvl] "${skill_name}-${stage}"`;
-
-}
+module.exports = (skill_name, level, stage) => `[${level} lvl] "${skill_name}-${stage}"`;

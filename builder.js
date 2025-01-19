@@ -1,5 +1,6 @@
 const crit_mode = require("./crit_mode");
 const { get_anomaly_type_multiplier, get_element_name_by_id } = require("./elements");
+const { get_target } = require("./target_stats");
 
 const damage_types = {
 	standart: 1,
@@ -60,9 +61,13 @@ const resistance_multiplier_calc = ( atacker_stats, target_stats ) => {
 		return Object.keys(res_obj).indexOf(name) > -1;
 	}
 
+
+
 	const RES = is_res_element( target_stats.RES, element_name ) ? target_stats.RES[element_name] : 0;
 	const RES_reduction = is_res_element( target_stats.RES_reduction, element_name ) ? target_stats.RES_reduction[element_name] : 0;
-
+	// 	console.log(
+	// 	`Element: ${element_name}, RES: ${RES}, RES_reduction: ${RES_reduction}, RES_ignore: ${atacker_stats.RES_ignore}`
+	// )
 	const result = 1 - RES + RES_reduction + atacker_stats.RES_ignore;
 
     return result;
@@ -85,12 +90,14 @@ module.exports = {
 	resistance_multiplier_calc,
     damage_taken_multiplier_calc,
     anomaly_level_multiplier_calc,
-    calculate_damage: ( atacker_stats, target_stats ) => {
+    calculate_damage: ( atacker_stats ) => {
 		if (debug == 0 || debug == 1 || debug == 12 || debug == 13 || debug == 3) {
 			is_debug = true;
 		} else {
 			is_debug = false;
 		}
+
+		const target_stats = get_target();
 
 		const base_damage = base_damage_calc( atacker_stats );
 
