@@ -33,13 +33,13 @@ set_agent({
 	name: 'miyabi', 
 	mindscape: 2, 
 	skill_levels: levels_12,
-	ATK: 3551,
-	crit_chance: 0.554,
-	crit_damage: 1.284,
+	ATK: 3608,
+	crit_chance: 0.602,
+	crit_damage: 1.14,
 	//crit_mode:crit_mode.force,
 	//crit_mode:crit_mode.none,
 	atribute_bonus_damage: {
-        frost: 0.3	//5 слот оружия
+        frost: 0.4	//5 слот оружия
     }
 });
 

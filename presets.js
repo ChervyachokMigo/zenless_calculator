@@ -9,9 +9,9 @@ module.exports = {
 			name: 'miyabi', 
 			mindscape: 2, 
 			skill_levels: levels_12,
-			ATK: 3229,
-			crit_chance: 0.53,
-			crit_damage: 1.572,
+			ATK: 3608,
+			crit_chance: 0.602,
+			crit_damage: 1.14,
 			//crit_mode:crit_mode.force,
 			//crit_mode:crit_mode.none,
 			atribute_bonus_damage: {
