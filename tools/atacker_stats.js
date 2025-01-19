@@ -16,7 +16,7 @@ const _this = module.exports = {
         agent_stats.PEN_ratio = PEN_ratio ? PEN_ratio : 0;
         agent_stats.PEN = PEN ? PEN : 0;
 		agent_stats.RES_ignore = RES_ignore ? RES_ignore : 0;
-        agent_stats.AP = AP;
+        agent_stats.AP = AP ? AP : 0;
 		agent_stats.crit_mode = typeof crit_mode !== 'undefined' ? crit_mode : crit_modes.average;
         agent_stats.crit_chance = crit_chance;
         agent_stats.crit_damage = crit_damage;
@@ -55,7 +55,7 @@ const _this = module.exports = {
 		agent_stats.skills_levels = levels;
 	},
 
-	set_stats_effect: ({ crit_chance, crit_damage, ATK }) => {
+	set_stats_effect: ({ crit_chance, crit_damage, ATK, atribute_bonus_damage }) => {
 		if (crit_chance) {
 			agent_stats.crit_chance += crit_chance;
 		}
@@ -65,6 +65,15 @@ const _this = module.exports = {
 		if (ATK) {
             agent_stats.ATK += ATK;
         }
+		if (atribute_bonus_damage) {
+			Object.entries(atribute_bonus_damage).map(([key, value]) => {
+				if (agent_stats.atribute_bonus_damage[key]) {
+					agent_stats.atribute_bonus_damage[key] += value;
+				} else {
+					agent_stats.atribute_bonus_damage[key] = value;
+				}
+			});
+		}
 	},
 
 	get_stats: () => agent_stats,

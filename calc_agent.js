@@ -53,7 +53,7 @@ module.exports = ( ) => {
 			const calc_result = calculate_damage( updated_stats );
 
 			skill_results.push({ skill_name: skill_name_generator(skill.name, level, stage), value: calc_result });
-			
+			console.log(updated_stats)
 		}
 
 		results.push(skill_results);
