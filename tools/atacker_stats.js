@@ -74,6 +74,8 @@ const _this = module.exports = {
 				}
 			});
 		}
+
+		console.log(agent_stats);
 	},
 
 	get_stats: () => agent_stats,

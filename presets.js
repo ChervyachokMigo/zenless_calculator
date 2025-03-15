@@ -9,9 +9,9 @@ module.exports = {
 			name: 'miyabi', 
 			mindscape: 2, 
 			skill_levels: levels_12,
-			ATK: 3608,
-			crit_chance: 0.602,
-			crit_damage: 1.14,
+			ATK: 3551,
+			crit_chance: 0.626,
+			crit_damage: 1.284,
 			//crit_mode:crit_mode.force,
 			//crit_mode:crit_mode.none,
 			atribute_bonus_damage: {
@@ -28,5 +28,34 @@ module.exports = {
 		});
 
 		calc_agent();
+	},
+
+	sadgod_2_anby: () => {
+		set_agent({ 
+			name: 'solder_0_anby', 
+			mindscape: 1, 
+			skill_levels: levels_12,
+			ATK: 2912,
+			crit_chance: 0.554,
+			crit_damage: 2.004,
+			PEN: 36,
+			//RES_ignore: 0.18,
+			//crit_mode:crit_mode.force,
+			//crit_mode:crit_mode.none,
+			atribute_bonus_damage: {
+				electric: 0.3
+			}
+		});
+
+		set_stats_effect({
+			ATK: 1363,
+			crit_chance: 0.22 + 0.2, 		
+			crit_damage: 0.6 + 0.4,		
+			atribute_bonus_damage: {
+				electric: 0.45
+			}
+		});
+
+		calc_agent();
 	}
-}
+} 

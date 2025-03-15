@@ -9,56 +9,63 @@ const { compare_results } = require("./tools/results");
 const calc_agent = require("./calc_agent");
 const set_status_effects = require("./tools/set_status_effects");
 const get_agent_stats = require("./tools/get_agent_stats");
-const { sadgod_1 } = require("./presets");
+const { sadgod_1, sadgod_2_anby } = require("./presets");
+const { init_webserver } = require("./webserver/web_server");
 
 set_target('hati', 70);
 
-sadgod_1();
+sadgod_2_anby();
 
 // set_agent({ 
-// 	name: 'miyabi', 
-// 	mindscape: 2, 
+// 	name: 'solder_0_anby', 
+// 	mindscape: 1, 
 // 	skill_levels: levels_12,
-// 	ATK: 3608,
-// 	crit_chance: 0.602,
-// 	crit_damage: 1.14,
+// 	ATK: 2943,
+// 	crit_chance: 0.698,
+// 	crit_damage: 1.364,
+// 	PEN: 45,
+// 	//RES_ignore: 0.18,
 // 	//crit_mode:crit_mode.force,
 // 	//crit_mode:crit_mode.none,
 // 	atribute_bonus_damage: {
-//         frost: 0.3
-//     }
+// 		electric: 0.4
+// 	}
 // });
 
 set_agent({ 
-	name: 'miyabi', 
-	mindscape: 2, 
+	name: 'solder_0_anby', 
+	mindscape: 1, 
 	skill_levels: levels_12,
-	ATK: 3608,
-	crit_chance: 0.602,
-	crit_damage: 1.14,
+	ATK: 2814,
+	crit_chance: 0.722,
+	crit_damage: 1.668,
+	PEN: 36,
+	//RES_ignore: 0.18,
 	//crit_mode:crit_mode.force,
 	//crit_mode:crit_mode.none,
 	atribute_bonus_damage: {
-        frost: 0.4	//5 слот оружия
-    }
-});
-
-
-set_stats_effect({
-	crit_chance: 0.12, //бонус после раскалывания
-	crit_damage: 0.8, //сигна 50%, сэт 30%
-	atribute_bonus_damage: {
-		frost: 0.4	//2 стака с Ешки по 20%
+		electric: 0.3
 	}
 });
 
-// set_stats_effect({ 
-// 	crit_chance: 0.15 + 0.12,
-// 	crit_damage: 0.80,
-// 	ATK: 0
-// });
+set_stats_effect({
+	ATK: 1365,
+	crit_chance: 0.22 + 0.2, 		
+	crit_damage: 0.6 + 0.4,		
+	atribute_bonus_damage: {
+		electric: (0.2 + 0.25)
+	}
+});
 
 calc_agent();
+
+compare_results();
+
+
+
+//init_webserver();
+
+
 
 //const res_1 = atribute_damage.calc(target_stats);
 
@@ -67,5 +74,3 @@ calc_agent();
  //const result_1 = calculate_skill_damage(target_stats);
  //console.log(result_1)
  //print_result(result_1);
-
-compare_results();
