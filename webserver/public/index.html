@@ -12,11 +12,14 @@
 </head>
 <body>
 	<script src="index.js"></script>
-
+	<div class="agents">
+		<div class="first"></div>
+		<div class="second"></div>
+	</div>
 	<div class="form_agent_stats">
 		<select id="agent_name">
 			<option value="miyabi">Miyabi</option>
-			<option selected value="solder_0_anby">Solder o Anby</option>
+			<option selected value="solder_0_anby">Solder 0 Anby</option>
 		</select>
 		<select id="agent_mindscape">
 			<option selected value="0">0</option>
@@ -38,7 +41,10 @@
 		<input type="number" id="agent_attribute_ice" placeholder="Attribute Bonus: Ice" />
 		<input type="number" id="agent_attribute_ether" placeholder="Attribute Bonus: Ether" />
 		<input type="number" id="agent_attribute_physical" placeholder="Attribute Bonus: Physical" />
-		<button onclick="set_agent_stats()">Set Agent Stats</button>
+		<button onclick="set_agent_stats('first')">Set Agent 1 Stats</button>
+		<button onclick="set_agent_stats('second')">Set Agent 2 Stats</button>
+		<button onclick="calculate_damage()">Calculate Damage</button>
+		<button onclick="set_preset_2()">Set Preset 2</button>
 	</div>
 	<div class="results">
 	</div>

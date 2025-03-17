@@ -46,3 +46,31 @@ body {
 .results > .Skill > .Params > div {
     margin-right: 12px;
 }
+
+.agents {
+	display: flex;
+    flex-direction: column;
+	margin-right: 12px;
+}
+
+.agents > div {
+    margin-bottom: 12px;
+}
+
+.agents > div >.count {
+	color: #999;
+}
+
+.agents > div >.name {
+    font-weight: bold;
+}
+
+.agents > div > .stats {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.agents > div > .stats > div {
+	margin-right: 8px;
+}

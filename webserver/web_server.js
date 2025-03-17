@@ -54,48 +54,64 @@ const check_number = (val) => {
 	return Number(val);
 }
 
+const get_agent_stats = (request_agent) => {
+	return {
+		name: request_agent.agent_name, 
+		mindscape: check_number(request_agent.agent_mindscape), 
+		skill_levels: levels_12,
+		ATK: check_number(request_agent.agent_atk),
+		crit_chance: check_number(request_agent.agent_crit_rate)/100,
+		crit_damage: check_number(request_agent.agent_crit_dmg)/100,
+		PEN: check_number(request_agent.agent_pen),
+		PEN_ratio: check_number(request_agent.agent_pen_ratio)/100,
+		RES_ignore: check_number(request_agent.agent_res_ignore),
+		//crit_mode:crit_mode.force,
+		//crit_mode:crit_mode.none,
+		atribute_bonus_damage: {
+			physical: check_number(request_agent.agent_attribute_physical)/100,
+			frost: check_number(request_agent.agent_attribute_ice)/100,
+			fire: check_number(request_agent.agent_attribute_fire)/100,
+			electric: check_number(request_agent.agent_attribute_electric)/100,
+			ether: check_number(request_agent.agent_attribute_ether)/100,
+		}
+	}
+}
+
+const set_general_effects = () => {
+	set_stats_effect({
+		ATK: 1363,
+		crit_chance: 0.22 + 0.2, 		
+		crit_damage: 0.6 + 0.4,		
+		atribute_bonus_damage: {
+			electric: 0.45
+		}
+	});
+}
+
 module.exports = {
 	start_webserver: async () => {
 		const web_app = start_webserver(3000);
 		web_app.post('/set_agent_stats',async (req, res) => {
 			const request_data = req.body;
 
-			const agent_args = { 
-				name: request_data.agent_name, 
-				mindscape: check_number(request_data.agent_mindscape), 
-				skill_levels: levels_12,
-				ATK: check_number(request_data.agent_atk),
-				crit_chance: check_number(request_data.agent_crit_rate)/100,
-				crit_damage: check_number(request_data.agent_crit_dmg)/100,
-				PEN: check_number(request_data.agent_pen),
-				PEN_ratio: check_number(request_data.agent_pen_ratio)/100,
-				RES_ignore: check_number(request_data.agent_res_ignore),
-				//crit_mode:crit_mode.force,
-				//crit_mode:crit_mode.none,
-				atribute_bonus_damage: {
-					physical: check_number(request_data.agent_attribute_physical)/100,
-					frost: check_number(request_data.agent_attribute_ice)/100,
-					fire: check_number(request_data.agent_attribute_fire)/100,
-					electric: check_number(request_data.agent_attribute_electric)/100,
-					ether: check_number(request_data.agent_attribute_ether)/100,
-				}
-			};
+			if (!request_data.first || !request_data.second){
+				res.send({ error: 'Ошибка: Отсутствует агент'});
+                return;
+			}
+
+			const first_agent_stats = get_agent_stats(request_data.first);
+			const second_agent_stats = get_agent_stats(request_data.second);
 
 			clear_results();
 
 			set_target('hati', 70);
 
-			sadgod_2_anby();
+			set_agent(first_agent_stats);
+			set_general_effects();
+			calc_agent();
 
-			set_agent(agent_args);
-			set_stats_effect({
-				ATK: 1363,
-				crit_chance: 0.22 + 0.2, 		
-				crit_damage: 0.6 + 0.4,		
-				atribute_bonus_damage: {
-					electric: 0.45
-				}
-			});
+			set_agent(second_agent_stats);
+			set_general_effects();
 			calc_agent();
 			
 			const result = compare_results();
