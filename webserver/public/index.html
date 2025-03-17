@@ -4,10 +4,43 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Zenless Calculator</title>
+
+	<link href="styles.css" rel="stylesheet">
+	<script src="jquery-3.7.1.min.js"></script>
+	<link href="favicon.png" rel="icon" type="image/x-icon" >
+	
 </head>
 <body>
-	<div class="target_list"></div>
-	<div class="agent_list"></div>
-	<div class="stats_list"></div>
+	<script src="index.js"></script>
+
+	<div class="form_agent_stats">
+		<select id="agent_name">
+			<option value="miyabi">Miyabi</option>
+			<option selected value="solder_0_anby">Solder o Anby</option>
+		</select>
+		<select id="agent_mindscape">
+			<option selected value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+		</select>
+		<input type="number" id="agent_atk" placeholder="ATK" />
+		<input type="number" id="agent_crit_rate" placeholder="Crit rate" />
+		<input type="number" id="agent_crit_dmg" placeholder="Crit damage" />
+		<input type="number" id="agent_pen" placeholder="PEN" />
+		<input type="number" id="agent_pen_ratio" placeholder="PEN Ratio" />
+		<input type="number" id="agent_res_ignore" placeholder="RES Ignore" />
+		<input type="number" id="agent_attribute_electric" placeholder="Attribute Bonus: Electric" />
+		<input type="number" id="agent_attribute_fire" placeholder="Attribute Bonus: Fire" />
+		<input type="number" id="agent_attribute_ice" placeholder="Attribute Bonus: Ice" />
+		<input type="number" id="agent_attribute_ether" placeholder="Attribute Bonus: Ether" />
+		<input type="number" id="agent_attribute_physical" placeholder="Attribute Bonus: Physical" />
+		<button onclick="set_agent_stats()">Set Agent Stats</button>
+	</div>
+	<div class="results">
+	</div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 module.exports = (damage_1, damage_2) => {
 	const differences = [];
 	const percents = [];
+	const texts = [];
 
 	damage_1.forEach( (v, pos) => {
 		if (!differences[pos]) {
@@ -11,25 +12,29 @@ module.exports = (damage_1, damage_2) => {
             percents.push([]);
         }
 
+		if (!texts[pos]) {
+            texts.push([]);
+        }
+
 		for (let i = 0; i < v.length; i++ ) {
-			let name = v[i].skill_name;
-			let Damage1 = v[i].value;
-			let Damage2 = damage_2[pos][i].value;
+			const name = v[i].skill_name;
+			const Damage1 = v[i].value;
+			const Damage2 = damage_2[pos][i].value;
 
 			const diff = Damage2 - Damage1;
-			let perc = (Damage2 / Damage1 - 1) * 100;
-
-			console.log(
+			const perc = (Damage2 / Damage1 - 1) * 100;
+			const text = { 
 				name,
-				'Damage 1:', Number(Damage1.toFixed(0)),
-				'Damage 2:', Number(Damage2.toFixed(0)),  
-				'Difference:', Number(diff.toFixed(0)),  
-				'Percentage:', Number(perc.toFixed(2)), '%'
-			)
+				damage_1: Number(Damage1.toFixed(0)),
+				damage_2: Number(Damage2.toFixed(0)),  
+				difference: Number(diff.toFixed(0)),  
+				percentage: Number(perc.toFixed(2))
+			}
 			
 			differences[pos].push( diff );
 			percents[pos].push( perc );
+			texts[pos].push( text );
 		}
     });
-	return percents;
+	return { differences, percents, texts };
 }

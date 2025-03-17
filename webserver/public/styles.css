@@ -1,0 +1,48 @@
+body {
+	background-color: #2a2a2a;
+	color: #e0e0e0;
+	font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+	padding-top: 18px;
+	display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form_agent_stats {
+	display: flex;
+	flex-direction: column;
+	width: min-content;
+}
+
+.results {
+	padding: 0 16px;
+}
+
+.results > .Skill {
+    display: flex;
+    flex-direction: column;
+	margin-bottom: 12px;
+}
+
+.results > .Skill > .Name {
+	font-weight: bold;
+	margin-bottom: 4px;
+	color: #D15F16;
+}
+
+.results > .Skill > .Params {
+	display: flex;
+    flex-direction: row;
+}
+
+.results > .Skill > .Params > div > .name {
+	font-weight: bold;
+	color: #999;
+}
+
+.results > .Skill > .Params > div {
+    margin-right: 12px;
+}

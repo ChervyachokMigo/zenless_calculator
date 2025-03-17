@@ -31,19 +31,35 @@ module.exports = {
 	},
 
 	sadgod_2_anby: () => {
+		// set_agent({ 
+		// 	name: 'solder_0_anby', 
+		// 	mindscape: 1, 
+		// 	skill_levels: levels_12,
+		// 	ATK: 2912,
+		// 	crit_chance: 0.554,
+		// 	crit_damage: 2.004,
+		// 	PEN: 36,
+		// 	//RES_ignore: 0.18,
+		// 	//crit_mode:crit_mode.force,
+		// 	//crit_mode:crit_mode.none,
+		// 	atribute_bonus_damage: {
+		// 		electric: 0.3
+		// 	}
+		// });
+
 		set_agent({ 
 			name: 'solder_0_anby', 
 			mindscape: 1, 
 			skill_levels: levels_12,
-			ATK: 2912,
-			crit_chance: 0.554,
-			crit_damage: 2.004,
-			PEN: 36,
+			ATK: 3090,
+			crit_chance: 0.53,
+			crit_damage: 1.844,
+			PEN: 18,
 			//RES_ignore: 0.18,
 			//crit_mode:crit_mode.force,
 			//crit_mode:crit_mode.none,
 			atribute_bonus_damage: {
-				electric: 0.3
+				electric: (0.3 + 0.1)
 			}
 		});
 

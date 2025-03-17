@@ -10,11 +10,11 @@ const calc_agent = require("./calc_agent");
 const set_status_effects = require("./tools/set_status_effects");
 const get_agent_stats = require("./tools/get_agent_stats");
 const { sadgod_1, sadgod_2_anby } = require("./presets");
-const { init_webserver } = require("./webserver/web_server");
+const { start_webserver } = require("./webserver/web_server");
 
-set_target('hati', 70);
+// set_target('hati', 70);
 
-sadgod_2_anby();
+// sadgod_2_anby();
 
 // set_agent({ 
 // 	name: 'solder_0_anby', 
@@ -32,38 +32,23 @@ sadgod_2_anby();
 // 	}
 // });
 
-set_agent({ 
-	name: 'solder_0_anby', 
-	mindscape: 1, 
-	skill_levels: levels_12,
-	ATK: 2814,
-	crit_chance: 0.722,
-	crit_damage: 1.668,
-	PEN: 36,
-	//RES_ignore: 0.18,
-	//crit_mode:crit_mode.force,
-	//crit_mode:crit_mode.none,
-	atribute_bonus_damage: {
-		electric: 0.3
-	}
-});
 
-set_stats_effect({
-	ATK: 1365,
-	crit_chance: 0.22 + 0.2, 		
-	crit_damage: 0.6 + 0.4,		
-	atribute_bonus_damage: {
-		electric: (0.2 + 0.25)
-	}
-});
+// set_stats_effect({
+// 	ATK: 1365,
+// 	crit_chance: 0.22 + 0.2, 		
+// 	crit_damage: 0.6 + 0.4,		
+// 	atribute_bonus_damage: {
+// 		electric: (0.2 + 0.25)
+// 	}
+// });
 
-calc_agent();
+// calc_agent();
 
-compare_results();
+// compare_results();
 
 
 
-//init_webserver();
+start_webserver();
 
 
 

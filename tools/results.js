@@ -10,9 +10,13 @@ module.exports = {
 	compare_results: () => {
 		if(results.length < 2) {
             console.error('Not enough results to compare.');
-            return;
+            return null;
         }
 		
-        compare_damage(results[0], results[1]);
+        return compare_damage(results[0], results[1]);
+	},
+
+	clear_results: () => {
+		results.length = 0;
 	}
 }
