@@ -15,6 +15,55 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: min-content;
+	border-radius: 4px;
+	padding: 4px;
+	background: #777;
+}
+
+.form_agent_stats > * {
+	margin-bottom: 4px;
+}
+
+.form_agent_stats > input {
+	padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 4px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.form_agent_stats > input::placeholder {
+	font-weight: 400;
+}
+
+.form_agent_stats > input:focus {
+	outline: none;
+	background: #D15F16;
+	color: #fff;
+}
+
+.form_agent_stats > input:focus::-webkit-input-placeholder {
+	color: #ffffff;
+}
+
+.form_agent_stats > input::-webkit-input-placeholder {
+	color: #777;
+}
+
+.form_agent_stats > button {
+	padding: 8px 16px;
+	border: none;
+	background: #333;
+	color: #fff;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.form_agent_stats > button:hover {
+	background: #555;
+	transition: background 0.3s ease;
 }
 
 .results {

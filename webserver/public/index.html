@@ -30,17 +30,17 @@
             <option value="5">5</option>
             <option value="6">6</option>
 		</select>
-		<input type="number" id="agent_atk" placeholder="ATK" />
-		<input type="number" id="agent_crit_rate" placeholder="Crit rate" />
-		<input type="number" id="agent_crit_dmg" placeholder="Crit damage" />
-		<input type="number" id="agent_pen" placeholder="PEN" />
-		<input type="number" id="agent_pen_ratio" placeholder="PEN Ratio" />
-		<input type="number" id="agent_res_ignore" placeholder="RES Ignore" />
-		<input type="number" id="agent_attribute_electric" placeholder="Attribute Bonus: Electric" />
-		<input type="number" id="agent_attribute_fire" placeholder="Attribute Bonus: Fire" />
-		<input type="number" id="agent_attribute_ice" placeholder="Attribute Bonus: Ice" />
-		<input type="number" id="agent_attribute_ether" placeholder="Attribute Bonus: Ether" />
-		<input type="number" id="agent_attribute_physical" placeholder="Attribute Bonus: Physical" />
+		<input type="number" id="agent_atk" placeholder="ATK" title="ATK" min="0" max="10000"/>
+		<input type="number" id="agent_crit_rate" placeholder="Crit rate" title="Crit rate" min="0" max="100" />
+		<input type="number" id="agent_crit_dmg" placeholder="Crit damage" title="Crit damage" min="0" max="1000" />
+		<input type="number" id="agent_pen" placeholder="PEN" title="PEN" />
+		<input type="number" id="agent_pen_ratio" placeholder="PEN Ratio" title="PEN Ratio" min="0" max="100"/>
+		<input type="number" id="agent_res_ignore" placeholder="RES Ignore" title="RES Ignore" />
+		<input type="number" id="agent_attribute_electric" placeholder="Attribute Bonus: Electric" title="Attribute Bonus: Electric" min="0" max="100" />
+		<input type="number" id="agent_attribute_fire" placeholder="Attribute Bonus: Fire" title="Attribute Bonus: Fire" min="0" max="100" />
+		<input type="number" id="agent_attribute_ice" placeholder="Attribute Bonus: Ice" title="Attribute Bonus: Ice" min="0" max="100" />
+		<input type="number" id="agent_attribute_ether" placeholder="Attribute Bonus: Ether" title="Attribute Bonus: Ether" min="0" max="100" />
+		<input type="number" id="agent_attribute_physical" placeholder="Attribute Bonus: Physical" title="Attribute Bonus: Physical" min="0" max="100" />
 		<button onclick="set_agent_stats('first')">Set Agent 1 Stats</button>
 		<button onclick="set_agent_stats('second')">Set Agent 2 Stats</button>
 		<button onclick="calculate_damage()">Calculate Damage</button>
