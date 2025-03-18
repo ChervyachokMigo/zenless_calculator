@@ -54,7 +54,7 @@ module.exports = {
 
 		check_folder(presets_path);
 
-		web_app.post('/set_agent_stats',async (req, res) => {
+		web_app.post('/compare_agents', async (req, res) => {
 			const request_data = req.body;
 
 			if (!request_data.first || !request_data.second){
