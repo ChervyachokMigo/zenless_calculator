@@ -11,20 +11,31 @@ body {
     justify-content: center;
 }
 
-.form_agent_stats {
+.forms {
 	display: flex;
 	flex-direction: column;
 	width: min-content;
 	border-radius: 4px;
 	padding: 4px;
 	background: #777;
+	width: 222px;
+	margin-left: 4px;
 }
 
-.form_agent_stats > * {
+.forms > * {
 	margin-bottom: 4px;
 }
 
-.form_agent_stats > input {
+.forms > .title {
+	font-size: large;
+	font-weight: 900;
+    text-align: end;
+    padding-right: 4px;
+    color: #ff751d;
+    text-shadow: 2px 1px 0 #4f4f4f;
+}
+
+.forms > input, .forms > select {
 	padding: 8px;
     border: none;
     border-radius: 4px;
@@ -33,25 +44,27 @@ body {
 	font-weight: bold;
 }
 
-.form_agent_stats > input::placeholder {
-	font-weight: 400;
-}
-
-.form_agent_stats > input:focus {
+.forms > input:focus, .forms > select:focus {
 	outline: none;
-	background: #D15F16;
+	background:  #ff751d;
 	color: #fff;
 }
 
-.form_agent_stats > input:focus::-webkit-input-placeholder {
-	color: #ffffff;
+.forms > input::placeholder {
+	font-weight: 400;
 }
 
-.form_agent_stats > input::-webkit-input-placeholder {
+.forms > input:focus::-webkit-input-placeholder {
+	color: #ffffff;
+	opacity: 0.4;
+}
+
+.forms > input::-webkit-input-placeholder {
 	color: #777;
 }
 
-.form_agent_stats > button, .presets > * {
+
+.forms > button, .presets > * {
 	padding: 8px 16px;
 	border: none;
 	background: #333;
@@ -61,10 +74,11 @@ body {
 	transition: background 0.3s ease;
 }
 
-.form_agent_stats > button:hover, .presets > *:hover {
-	background: #555;
+.forms > button:hover, .presets > *:hover {
+	background: #ff751d;
 	transition: background 0.3s ease;
 }
+
 
 .results {
 	padding: 0 16px;
@@ -96,35 +110,42 @@ body {
     margin-right: 12px;
 }
 
-.agents {
+
+
+.agents, .effects {
 	display: flex;
     flex-direction: column;
 	margin-right: 12px;
 }
 
-.agents > div {
+.agents > div, .effects {
     margin-bottom: 12px;
 }
 
-.agents > div >.count {
+.agents > div > .count {
 	color: #999;
 }
 
-.agents > div >.name {
+.agents > div > .name {
     font-weight: bold;
 }
 
-.agents > div > .stats {
+.agents > div > .stats, .effects > .stats {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
-.agents > div > .stats > div {
+.agents > div > .stats > div, .effects > .stats > div {
 	margin-right: 8px;
 }
+
+
 
 .presets > * {
 	width: -webkit-fill-available;
 	margin-bottom: 4px;
 }
+
+
+

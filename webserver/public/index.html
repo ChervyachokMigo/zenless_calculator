@@ -23,12 +23,16 @@
 		<div class="first"></div>
 		<div class="second"></div>
 	</div>
-	<div class="form_agent_stats">
-		<select id="agent_name">
+	<div class="effects">
+	</div>
+
+	<div class="form_agent_stats forms">
+		<div class="title">Agent stats</div>
+		<select id="agent_name" title="Agent">
 			<option value="miyabi">Miyabi</option>
 			<option selected value="solder_0_anby">Solder 0 Anby</option>
 		</select>
-		<select id="agent_mindscape">
+		<select id="agent_mindscape" title="Mindscape">
 			<option selected value="0">0</option>
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -57,7 +61,8 @@
 		<div class="presets">
 		</div>
 	</div>
-	<div class="form_effects_stats">
+	<div class="form_effects_stats forms">
+		<div class="title">Effects stats</div>
 		<input type="number" id="effects_atk" placeholder="ATK" title="ATK" min="0" max="10000"/>
 		<input type="number" id="effects_crit_rate" placeholder="Crit rate" title="Crit rate" min="0" max="100" />
 		<input type="number" id="effects_crit_dmg" placeholder="Crit damage" title="Crit damage" min="0" max="1000" />
