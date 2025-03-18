@@ -51,7 +51,7 @@ body {
 	color: #777;
 }
 
-.form_agent_stats > button {
+.form_agent_stats > button, .presets > * {
 	padding: 8px 16px;
 	border: none;
 	background: #333;
@@ -61,7 +61,7 @@ body {
 	transition: background 0.3s ease;
 }
 
-.form_agent_stats > button:hover {
+.form_agent_stats > button:hover, .presets > *:hover {
 	background: #555;
 	transition: background 0.3s ease;
 }
@@ -122,4 +122,9 @@ body {
 
 .agents > div > .stats > div {
 	margin-right: 8px;
+}
+
+.presets > * {
+	width: -webkit-fill-available;
+	margin-bottom: 4px;
 }
