@@ -10,27 +10,42 @@ module.exports = {
 		return data.replace(reg, replace_content);
 	},
 
-	get_agent_stats: (request_agent) => {
+	get_agent_stats: (values) => {
 		return remove_zero({
-			name: request_agent.agent_name, 
-			mindscape: check_number(request_agent.agent_mindscape), 
+			name: values.agent_name, 
+			mindscape: check_number(values.agent_mindscape), 
 			skill_levels: levels_12,
-			ATK: check_number(request_agent.agent_atk),
-			crit_chance: check_number(request_agent.agent_crit_rate)/100,
-			crit_damage: check_number(request_agent.agent_crit_dmg)/100,
-			PEN: check_number(request_agent.agent_pen),
-			PEN_ratio: check_number(request_agent.agent_pen_ratio)/100,
-			RES_ignore: check_number(request_agent.agent_res_ignore),
+			ATK: check_number(values.agent_atk),
+			crit_chance: check_number(values.agent_crit_rate)/100,
+			crit_damage: check_number(values.agent_crit_dmg)/100,
+			PEN: check_number(values.agent_pen),
+			PEN_ratio: check_number(values.agent_pen_ratio)/100,
+			RES_ignore: check_number(values.agent_res_ignore),
 			//crit_mode:crit_mode.force,
 			//crit_mode:crit_mode.none,
 			atribute_bonus_damage: remove_zero({
-				physical: check_number(request_agent.agent_attribute_physical)/100,
-				frost: check_number(request_agent.agent_attribute_ice)/100,
-				fire: check_number(request_agent.agent_attribute_fire)/100,
-				electric: check_number(request_agent.agent_attribute_electric)/100,
-				ether: check_number(request_agent.agent_attribute_ether)/100,
+				physical: check_number(values.agent_attribute_physical)/100,
+				frost: check_number(values.agent_attribute_ice)/100,
+				fire: check_number(values.agent_attribute_fire)/100,
+				electric: check_number(values.agent_attribute_electric)/100,
+				ether: check_number(values.agent_attribute_ether)/100,
 			})
 		})
+	},
+
+	get_effects_stats: (values) => {
+		return remove_zero({
+			ATK: check_number(values.effects_atk),
+			crit_chance: check_number(values.effects_crit_rate)/100,
+			crit_damage: check_number(values.effects_crit_dmg)/100,
+			atribute_bonus_damage: remove_zero({
+				physical: check_number(values.effects_attribute_physical)/100,
+				fire: check_number(values.effects_attribute_fire)/100,
+				frost: check_number(values.effects_attribute_ice)/100,
+				electric: check_number(values.effects_attribute_electric)/100,
+				ether: check_number(values.effects_attribute_ether)/100,
+			})
+		});
 	},
 
 	transform_agent_stats: (values) => {

@@ -11,6 +11,19 @@ body {
     justify-content: center;
 }
 
+.forms_group {
+	display: flex;
+    flex-direction: column;
+	margin-right: 4px;
+}
+
+.forms_field {
+	display: flex;
+    flex-direction: row;
+    width: -webkit-fill-available;
+	margin-bottom: 4px;
+}
+
 .forms {
 	display: flex;
 	flex-direction: column;
@@ -79,21 +92,36 @@ body {
 	transition: background 0.3s ease;
 }
 
+.button_compare_agents {
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+}
+
+.button_compare_agents > * {
+	margin: 0;
+}
 
 .results {
-	padding: 0 16px;
+	padding: 8px 8px 0 8px;
+	background: #777;
+	border-radius: 4px;
 }
 
 .results > .Skill {
     display: flex;
     flex-direction: column;
-	margin-bottom: 12px;
+	margin-bottom: 8px;
+
 }
 
 .results > .Skill > .Name {
 	font-weight: bold;
 	margin-bottom: 4px;
-	color: #D15F16;
+	color: #ff751d;
+	background: #555;
+    border-radius: 4px;
+    padding: 4px 8px;
 }
 
 .results > .Skill > .Params {
@@ -103,7 +131,9 @@ body {
 
 .results > .Skill > .Params > div > .name {
 	font-weight: bold;
-	color: #999;
+	color: #bbb;
+    margin-bottom: 4px;
+	text-shadow: 1px 1px #3e3e3e;
 }
 
 .results > .Skill > .Params > div {

@@ -26,53 +26,61 @@
 	<div class="effects">
 	</div>
 
-	<div class="form_agent_stats forms">
-		<div class="title">Agent stats</div>
-		<select id="agent_name" title="Agent">
-			<option value="miyabi">Miyabi</option>
-			<option selected value="solder_0_anby">Solder 0 Anby</option>
-		</select>
-		<select id="agent_mindscape" title="Mindscape">
-			<option selected value="0">0</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-		</select>
-		<input type="number" id="agent_atk" placeholder="ATK" title="ATK" min="0" max="10000"/>
-		<input type="number" id="agent_crit_rate" placeholder="Crit rate" title="Crit rate" min="0" max="100" />
-		<input type="number" id="agent_crit_dmg" placeholder="Crit damage" title="Crit damage" min="0" max="1000" />
-		<input type="number" id="agent_pen" placeholder="PEN" title="PEN" />
-		<input type="number" id="agent_pen_ratio" placeholder="PEN Ratio" title="PEN Ratio" min="0" max="100"/>
-		<input type="number" id="agent_res_ignore" placeholder="RES Ignore" title="RES Ignore" />
-		<input type="number" id="agent_attribute_electric" placeholder="Attribute Bonus: Electric" title="Attribute Bonus: Electric" min="0" max="100" />
-		<input type="number" id="agent_attribute_fire" placeholder="Attribute Bonus: Fire" title="Attribute Bonus: Fire" min="0" max="100" />
-		<input type="number" id="agent_attribute_ice" placeholder="Attribute Bonus: Ice" title="Attribute Bonus: Ice" min="0" max="100" />
-		<input type="number" id="agent_attribute_ether" placeholder="Attribute Bonus: Ether" title="Attribute Bonus: Ether" min="0" max="100" />
-		<input type="number" id="agent_attribute_physical" placeholder="Attribute Bonus: Physical" title="Attribute Bonus: Physical" min="0" max="100" />
-		<button onclick="set_agent_stats('first')">Set Agent 1 Stats</button>
-		<button onclick="set_agent_stats('second')">Set Agent 2 Stats</button>
-		<button onclick="compare_agents()">Compare agents</button>
-		<input type="text" id="agent_preset_name" placeholder="Preset name" title="Preset name" value="" />
-		<button onclick="save_preset()">Save preset</button>
-		<!-- <button onclick="set_preset_2()">Set Preset 2</button> -->
-		<div class="presets">
+	<div class="forms_group">
+		<div class="forms_field">
+			<div class="form_agent_stats forms">
+				<div class="title">Agent stats</div>
+				<select id="agent_name" title="Agent">
+					<option value="miyabi">Miyabi</option>
+					<option selected value="solder_0_anby">Solder 0 Anby</option>
+				</select>
+				<select id="agent_mindscape" title="Mindscape">
+					<option selected value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+				<input type="number" id="agent_atk" placeholder="ATK" title="ATK" min="0" max="10000"/>
+				<input type="number" id="agent_crit_rate" placeholder="Crit rate" title="Crit rate" min="0" max="100" />
+				<input type="number" id="agent_crit_dmg" placeholder="Crit damage" title="Crit damage" min="0" max="1000" />
+				<input type="number" id="agent_pen" placeholder="PEN" title="PEN" />
+				<input type="number" id="agent_pen_ratio" placeholder="PEN Ratio" title="PEN Ratio" min="0" max="100"/>
+				<input type="number" id="agent_res_ignore" placeholder="RES Ignore" title="RES Ignore" />
+				<input type="number" id="agent_attribute_electric" placeholder="Attribute Bonus: Electric" title="Attribute Bonus: Electric" min="0" max="100" />
+				<input type="number" id="agent_attribute_fire" placeholder="Attribute Bonus: Fire" title="Attribute Bonus: Fire" min="0" max="100" />
+				<input type="number" id="agent_attribute_ice" placeholder="Attribute Bonus: Ice" title="Attribute Bonus: Ice" min="0" max="100" />
+				<input type="number" id="agent_attribute_ether" placeholder="Attribute Bonus: Ether" title="Attribute Bonus: Ether" min="0" max="100" />
+				<input type="number" id="agent_attribute_physical" placeholder="Attribute Bonus: Physical" title="Attribute Bonus: Physical" min="0" max="100" />
+				<button onclick="set_agent_stats('first')">Set Agent 1 Stats</button>
+				<button onclick="set_agent_stats('second')">Set Agent 2 Stats</button>
+			</div>
+			<div class="presets_form forms">
+				<div class="title">Presets</div>
+				<input type="text" id="agent_preset_name" placeholder="Preset name" title="Preset name" value="" />
+				<button onclick="save_preset()">Save preset</button>
+				<!-- <button onclick="set_preset_2()">Set Preset 2</button> -->
+				<div class="presets"></div>
+			</div>
+			<div class="form_effects_stats forms">
+				<div class="title">Effects stats</div>
+				<input type="number" id="effects_atk" placeholder="ATK" title="ATK" min="0" max="10000"/>
+				<input type="number" id="effects_crit_rate" placeholder="Crit rate" title="Crit rate" min="0" max="100" />
+				<input type="number" id="effects_crit_dmg" placeholder="Crit damage" title="Crit damage" min="0" max="1000" />
+				<input type="number" id="effects_attribute_electric" placeholder="Attribute Bonus: Electric" title="Attribute Bonus: Electric" min="0" max="100" />
+				<input type="number" id="effects_attribute_fire" placeholder="Attribute Bonus: Fire" title="Attribute Bonus: Fire" min="0" max="100" />
+				<input type="number" id="effects_attribute_ice" placeholder="Attribute Bonus: Ice" title="Attribute Bonus: Ice" min="0" max="100" />
+				<input type="number" id="effects_attribute_ether" placeholder="Attribute Bonus: Ether" title="Attribute Bonus: Ether" min="0" max="100" />
+				<input type="number" id="effects_attribute_physical" placeholder="Attribute Bonus: Physical" title="Attribute Bonus: Physical" min="0" max="100" />
+				<button onclick="set_effects()">Set effects</button>
+			</div>	
 		</div>
+		<div class="button_compare_agents forms">
+            <button onclick="compare_agents()">Compare agents</button>
+        </div>
 	</div>
-	<div class="form_effects_stats forms">
-		<div class="title">Effects stats</div>
-		<input type="number" id="effects_atk" placeholder="ATK" title="ATK" min="0" max="10000"/>
-		<input type="number" id="effects_crit_rate" placeholder="Crit rate" title="Crit rate" min="0" max="100" />
-		<input type="number" id="effects_crit_dmg" placeholder="Crit damage" title="Crit damage" min="0" max="1000" />
-		<input type="number" id="effects_attribute_electric" placeholder="Attribute Bonus: Electric" title="Attribute Bonus: Electric" min="0" max="100" />
-		<input type="number" id="effects_attribute_fire" placeholder="Attribute Bonus: Fire" title="Attribute Bonus: Fire" min="0" max="100" />
-		<input type="number" id="effects_attribute_ice" placeholder="Attribute Bonus: Ice" title="Attribute Bonus: Ice" min="0" max="100" />
-		<input type="number" id="effects_attribute_ether" placeholder="Attribute Bonus: Ether" title="Attribute Bonus: Ether" min="0" max="100" />
-		<input type="number" id="effects_attribute_physical" placeholder="Attribute Bonus: Physical" title="Attribute Bonus: Physical" min="0" max="100" />
-		<button onclick="set_effects()">Set effects</button>
-	</div>	
 	<div class="results">
 	</div>
 </body>
