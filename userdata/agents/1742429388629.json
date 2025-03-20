@@ -1,0 +1,19 @@
+{
+    "name": "Anby Miyabi 2xpieces",
+    "values": {
+        "agent_name": "solder_0_anby",
+        "agent_mindscape": 1,
+        "agent_skill_levels": [
+            12,
+            12,
+            12,
+            12,
+            12
+        ],
+        "agent_atk": 2943,
+        "agent_crit_rate": 57.8,
+        "agent_crit_dmg": 200.4,
+        "agent_pen": 18,
+        "agent_attribute_electric": 30
+    }
+}
