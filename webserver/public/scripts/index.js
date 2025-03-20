@@ -4,11 +4,11 @@ const effects_names = {
 	effects_atk: 'ATK',
     effects_crit_rate: 'Crit Rate',
     effects_crit_dmg: 'Crit Damage',
-    effects_attribute_electric: 'Electric Bonus Damage',
-	effects_attribute_fire: 'Fire Bonus Damage',
-    effects_attribute_ice: 'Frost Bonus Damage',
-    effects_attribute_ether: 'Ether Bonus Damage',
-    effects_attribute_physical: 'Physical Bonus Damage',
+    effects_attribute_electric: 'Attribute Electric',
+	effects_attribute_fire: 'Attribute Fire',
+    effects_attribute_ice: 'Attribute Frost',
+    effects_attribute_ether: 'Attribute Ether',
+    effects_attribute_physical: 'Attribute Physical',
 }
 
 const get_effects_form_data = () => {
@@ -24,26 +24,28 @@ const get_effects_form_data = () => {
     };
 }
 
-const div_by_value = (name, val, suffix = '') => {
-	if (val) {
-		return `<div class="${name}" title="${effects_names[name]}">${val}${suffix}</div>`;
-	} else {
-		return '';
-	}
+const div_by_value = (name, val, suffix = '%') => {
+	return val ?
+		`<div class="${name}" title="${effects_names[name]}">
+			<div class="Name">${effects_names[name]}</div>
+			<div class="Value">${val}${suffix}</div>
+		</div>` : '';
 }
 
 const set_effects = () => {
 	effects = get_effects_form_data();
-	$(`.effects`).html(`<div class="stats">
-		${div_by_value('effects_atk', effects.effects_atk)}
-		${div_by_value('effects_crit_rate', effects.effects_crit_rate, '%')}
-		${div_by_value('effects_crit_dmg', effects.effects_crit_dmg, '%')}
-		${div_by_value('effects_attribute_electric', effects.effects_attribute_electric, '%')}
-		${div_by_value('effects_attribute_fire', effects.effects_attribute_fire, '%')}
-		${div_by_value('effects_attribute_ice', effects.effects_attribute_ice, '%')}
-		${div_by_value('effects_attribute_ether', effects.effects_attribute_ether, '%')}
-		${div_by_value('effects_attribute_physical', effects.effects_attribute_physical, '%')}
-	</div>`);
+	$(`.effects`).html(`
+		<div class="title">Effects stats</div>
+		<div class="stats">
+			${div_by_value('effects_atk', effects.effects_atk, '')}
+			${div_by_value('effects_crit_rate', effects.effects_crit_rate)}
+			${div_by_value('effects_crit_dmg', effects.effects_crit_dmg)}
+			${div_by_value('effects_attribute_electric', effects.effects_attribute_electric)}
+			${div_by_value('effects_attribute_fire', effects.effects_attribute_fire)}
+			${div_by_value('effects_attribute_ice', effects.effects_attribute_ice)}
+			${div_by_value('effects_attribute_ether', effects.effects_attribute_ether)}
+			${div_by_value('effects_attribute_physical', effects.effects_attribute_physical)}
+		</div>`);
 }
 
 

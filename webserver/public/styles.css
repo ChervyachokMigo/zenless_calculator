@@ -140,34 +140,69 @@ body {
     margin-right: 12px;
 }
 
-
+.all_stats {
+	display: flex;
+    flex-direction: column;
+}
 
 .agents, .effects {
 	display: flex;
     flex-direction: column;
-	margin-right: 12px;
 }
 
 .agents > div, .effects {
-    margin-bottom: 12px;
+	display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+    background: #777;
+    border-radius: 4px;
 }
 
-.agents > div > .count {
-	color: #999;
+.agents > div > .title, .effects > .title {
+	font-size: large;
+	font-weight: 900;
+    text-align: end;
+    color: #ff751d;
+    text-shadow: 2px 1px 0 #4f4f4f;
+	padding: 4px;
 }
 
 .agents > div > .name {
     font-weight: bold;
+    margin-bottom: 4px;
+    text-align: start;
+    color: #ff751d;
+    background: #555;
+    padding: 4px 8px 4px 8px;
+    border-radius: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .agents > div > .stats, .effects > .stats {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
+	margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 4px;
 }
 
 .agents > div > .stats > div, .effects > .stats > div {
-	margin-right: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 2px;
+}
+
+.agents > div > .stats > div > .Name, .effects > .stats > div > .Name {
+	font-weight: bold;
+	margin-right: 20px;
+}
+
+.agents > div >.stats > div >.Value, .effects > .stats > div > .Value {
+    color: #ff751d;
+	text-shadow: 2px 1px 0 #4f4f4f;
 }
 
 
