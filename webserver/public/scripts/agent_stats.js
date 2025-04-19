@@ -26,6 +26,8 @@ const set_agent_stats = async (agent_idx) => {
 	const crit_rate = request_args.agent_crit_rate? request_args.agent_crit_rate + '%' : '0';
 	const crit_dmg = request_args.agent_crit_dmg? request_args.agent_crit_dmg + '%' : '0';
 
+	const current_stats = agents[agent_idx];
+
 	$(`.agents > .${agent_idx}`).html(`
 		<div class="title">${agent_count_names[agent_idx]}</div>
 		<div class="name">${agent_names[request_args.agent_name]}</div>
@@ -38,5 +40,8 @@ const set_agent_stats = async (agent_idx) => {
 			${insert_attribute_div('attribute_ice', 'Attribute Frost', request_args.agent_attribute_ice)}
 			${insert_attribute_div('attribute_ether', 'Attribute Ether', request_args.agent_attribute_ether)}
 			${insert_attribute_div('attribute_physical', 'Attribute Physical', request_args.agent_attribute_physical)}
+		</div>
+		<div class="change">
+			<button onclick="fill_agent_form_data(agents['${agent_idx}']);">Change</button>
 		</div>`)
 }

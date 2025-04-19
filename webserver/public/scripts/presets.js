@@ -22,8 +22,8 @@ const set_preset_2 = () => {
 const make_preset_list = () => {
 	const selected_agent = $('#agent_name').val();
 	$('.presets').html(
-		presets.filter( v => v.values.agent_name == selected_agent).map( (preset, idx) => 
-			`<input type="button" onclick="set_preset(${idx})" value="Set preset:&#x00A;${preset.name}" />`).join('')
+		presets.map( (preset, idx) => preset.values.agent_name == selected_agent ?
+			`<input type="button" onclick="set_preset(${idx})" value="Set preset:&#x00A;${preset.name}" />`: '').join('')
 	);
 }
 

@@ -200,11 +200,27 @@ body {
 	margin-right: 20px;
 }
 
-.agents > div >.stats > div >.Value, .effects > .stats > div > .Value {
+.agents > div > .stats > div >.Value, .effects > .stats > div > .Value {
     color: #ff751d;
 	text-shadow: 2px 1px 0 #4f4f4f;
 }
 
+.agents > div > .change > button {
+	width: -webkit-fill-available;
+    margin: 0 4px 4px 4px;
+	padding: 8px 16px;
+	border: none;
+	background: #333;
+	color: #fff;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.agents > div > .change > button:hover {
+	background: #ff751d;
+	transition: background 0.3s ease;
+}
 
 
 .presets > * {
