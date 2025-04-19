@@ -1,0 +1,19 @@
+{
+    "name": "Solder Anby 3090/65/1604 КШ",
+    "values": {
+        "agent_name": "solder_0_anby",
+        "agent_mindscape": 1,
+        "agent_skill_levels": [
+            12,
+            12,
+            12,
+            12,
+            12
+        ],
+        "agent_atk": 3060,
+        "agent_crit_rate": 65,
+        "agent_crit_dmg": 1604,
+        "agent_pen": 18,
+        "agent_attribute_electric": 40
+    }
+}

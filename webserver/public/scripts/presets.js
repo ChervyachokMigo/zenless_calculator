@@ -19,12 +19,21 @@ const set_preset_2 = () => {
 	fill_agent_form_data(preset_values);
 }
 
+const make_preset_list = () => {
+	const selected_agent = $('#agent_name').val();
+	$('.presets').html(
+		presets.filter( v => v.values.agent_name == selected_agent).map( (preset, idx) => 
+			`<input type="button" onclick="set_preset(${idx})" value="Set preset:&#x00A;${preset.name}" />`).join('')
+	);
+}
+
 const load_preset_list = async () => {
 	const result = await post({ url_path: 'load_preset_list' });
 	presets = result;
-	$('.presets').html(
-		presets.map( (preset, idx) => `<input type="button" onclick="set_preset(${idx})" value="Set preset:&#x00A;${preset.name}" />`).join('')
-	);
+	make_preset_list();
+	$('#agent_name').on('change', () => {
+		make_preset_list();
+	})
 }
 
 const save_preset = async () => {
