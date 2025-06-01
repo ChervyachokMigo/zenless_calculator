@@ -42,9 +42,9 @@ const xisuan = {
 }
 
 const buffs = {
-	atk: 1200,
+	atk: 0,
 	cr: 0,
-	crit_dmg: 0.25,
+	crit_dmg: 0,
 	hp: 0
 }
 
@@ -61,7 +61,7 @@ const sheer_force_damage = (in_stats) => {
 		base_stats.hp * disk_stat.disks_set_bonus.hp + buffs.hp;
 	let attribute = 1;
 
-	let cr = base_stats.cr + buffs.cr + disk_stat.disks_set_bonus.cr;
+	let cr = base_stats.cr + buffs.cr + disk_stat.disks_set_bonus.cr + base_stats.wengine.cr;
 	let crit_dmg = base_stats.crit_dmg + buffs.crit_dmg + xisuan.passive_effect.crit_dmg;
 	
 
@@ -99,7 +99,7 @@ const sheer_force_damage = (in_stats) => {
   let result = baseSheer + atkMultiplier + hpMultiplier;
 
   const setBonus = (1+disk_stat.disks_set_bonus.sheer_dmg);
-  const crit_bonus = 1 + (cr * crit_dmg);
+  const crit_bonus = (cr * crit_dmg);
 
   result = result * setBonus * attribute * crit_bonus;
  //console.log(in_stats, cr, crit_dmg, crit_bonus, result)
@@ -159,40 +159,43 @@ function getTopDamageCombinations(disk_main_stats, disks_sub_stats, sheer_force)
             const sheer_force_results = sheer_force(current_stats);
             const damage = sheer_force_results.damage;
 
-            // Добавляем в топ-10 если есть место или урон больше минимального в топе
+            // Добавляем в топ если есть место или урон больше минимального в топе
 			const new_element = { stats: current_stats, ...sheer_force_results, main_stats, sub_stats };
-            if (top_list.length < 50) {
-                top_list.push(new_element);
+
+			top_list.push(new_element);
+
+            // if (top_list.length < 50) {
+            //     top_list.push(new_element);
                 
-                // Обновляем минимальное значение в топе
-                if (damage < minDamageInTop) {
-                    minDamageInTop = damage;
-                    minIndex = top_list.length - 1;
-                } else if (minDamageInTop === -Infinity) {
-                    minDamageInTop = damage;
-                    minIndex = 0;
-                }
-            } 
-            else if (damage > minDamageInTop) {
-                // Заменяем слабейший элемент в топе
-                top_list[minIndex] = new_element;
+            //     // Обновляем минимальное значение в топе
+            //     if (damage < minDamageInTop) {
+            //         minDamageInTop = damage;
+            //         minIndex = top_list.length - 1;
+            //     } else if (minDamageInTop === -Infinity) {
+            //         minDamageInTop = damage;
+            //         minIndex = 0;
+            //     }
+            // } 
+            // else if (damage > minDamageInTop) {
+            //     // Заменяем слабейший элемент в топе
+            //     top_list[minIndex] = new_element;
                 
-                // Находим новый минимальный урон в топе
-                minDamageInTop = top_list[0].damage;
-                minIndex = 0;
+            //     // Находим новый минимальный урон в топе
+            //     minDamageInTop = top_list[0].damage;
+            //     minIndex = 0;
                 
-                for (let i = 1; i < top_list.length; i++) {
-                    if (top_list[i].damage < minDamageInTop) {
-                        minDamageInTop = top_list[i].damage;
-                        minIndex = i;
-                    }
-                }
-            }
+            //     for (let i = 1; i < top_list.length; i++) {
+            //         if (top_list[i].damage < minDamageInTop) {
+            //             minDamageInTop = top_list[i].damage;
+            //             minIndex = i;
+            //         }
+            //     }
+            // }
         }
     }
 
     // Сортируем топ по убыванию урона
-    return top_list.sort((a, b) => b.damage - a.damage);
+    return top_list.sort((a, b) => b.damage - a.damage).slice(0, 50);
 }
 
 // Пример использования:
@@ -202,7 +205,59 @@ const topCombinations = getTopDamageCombinations(
     sheer_force_damage
 );
 
-console.log("Топ-10 комбинаций по урону:");
-topCombinations.forEach((combo, index) => {
-    console.log(`#${index + 1}: Урон = ${combo.damage}, Характеристики = ${JSON.stringify(combo)}`);
+const convert_stats_to_text = (stats) => {
+	let result = [];
+	for(let [statName, statValue] of Object.entries(stats) ) {
+		switch(statName) {
+			case 'atk':
+				result.push(` - АТК%: ${statValue}`);
+				break;
+			case 'hp':
+				result.push(` - HP%: ${statValue}`);
+				break;
+			case 'cr':
+				result.push(` - КШ: ${(statValue * 100).toFixed(0)}`);
+				break;
+			case 'crit_dmg':
+				result.push(` - КУ: ${(statValue * 100).toFixed(0)}`);
+				break;
+			case 'attribute':
+				result.push(` - Атрибут: ${statValue * 100}%`);
+				break;
+		}
+	}
+	return result.join('\n');
+}
+
+const convert_points_to_text = (points) => {
+	let result = [];
+	for(let [pointsName, pointsValue] of Object.entries(points) ) {
+		switch(pointsName) {
+			case 'atk':
+				result.push(` - АТК%: ${pointsValue}`);
+				break;
+			case 'hp':
+				result.push(` - HP%: ${pointsValue}`);
+				break;
+			case 'cr':
+				result.push(` - КШ: ${pointsValue}`);
+				break;
+			case 'crit_dmg':
+				result.push(` - КУ: ${pointsValue}`);
+				break;
+			case 'attribute':
+				result.push(` - Атрибут: ${pointsValue}`);
+				break;
+		}
+	}
+	return result.join('\n');
+}
+
+console.log("Топ комбинаций по урону:");
+topCombinations.forEach((v, index) => {
+    console.log(`#${index + 1}:`)
+	console.log(`Урон = ${v.damage}`)
+	console.log(`Характеристики = \n${convert_stats_to_text(v.stats)}`);
+	console.log(`Мейн статы = \n${convert_points_to_text(v.main_stats)}`);
+	console.log(`Саб статы = \n${convert_points_to_text(v.sub_stats)}`);
 });
