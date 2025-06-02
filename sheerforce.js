@@ -10,7 +10,7 @@ const base_stats = {
 		cr: 0.2,
 	},
 	cr: 0.194,
-	crit_dmg: 1.50,
+	crit_dmg: 0.50,
 }
 
 const disk_stat = {
@@ -42,10 +42,12 @@ const xisuan = {
 }
 
 const buffs = {
-	atk: 0,
+	atk: 1200,
 	cr: 0,
-	crit_dmg: 0,
-	hp: 0
+	crit_dmg: 0.25,
+	hp: 0,
+	sheerforce: 0,
+	damagebonus: 0
 }
 
 
@@ -93,17 +95,16 @@ const sheer_force_damage = (in_stats) => {
 		cr = 1;
 	}
 
-  const baseSheer = base_stats.sheerforce;
   const atkMultiplier = atk * xisuan.sheerforce_multiplier.atk;
   const hpMultiplier = hp * xisuan.sheerforce_multiplier.hp;
-  let result = baseSheer + atkMultiplier + hpMultiplier;
+  const sheer_force_total = base_stats.sheerforce + atkMultiplier + hpMultiplier + buffs.sheerforce;
 
   const setBonus = (1+disk_stat.disks_set_bonus.sheer_dmg);
-  const crit_bonus = (cr * crit_dmg);
+  const crit_bonus = (1 + cr * crit_dmg);
 
-  result = result * setBonus * attribute * crit_bonus;
- //console.log(in_stats, cr, crit_dmg, crit_bonus, result)
-  return { damage: result, stats: {atk, hp, cr, crit_dmg, attribute}};
+  const damage = sheer_force_total * setBonus * attribute * crit_bonus * (1 + buffs.damagebonus);
+
+  return { damage, stats: {atk, hp, cr, crit_dmg, attribute, sheer_force_total }};
 }
 
 
@@ -122,75 +123,47 @@ function mergeStats(obj1, obj2) {
 }
 
 
-const disk_main_stats = [
-	{ hp: 30 },
-	{ hp: 20, attribute: 1 },
-	{ hp: 20, atk: 10 },
-	{ hp: 20, crit_dmg: 10 },
-	{ hp: 10, attribute: 1, crit_dmg: 10 },
-	{ hp: 10, atk: 10, crit_dmg: 10 },
-	{ hp: 20, cr: 10 },
-	{ hp: 10, attribute: 1, cr: 10 },
-	{ hp: 10, atk: 10, cr: 10 },
-	{ atk: 10, hp: 20 },
-	{ atk: 10, attribute: 1, hp: 10 },
-	{ atk: 20, hp: 10 },
-	{ atk: 10, hp: 10, crit_dmg: 10 },
-	{ atk: 10, attribute: 1, crit_dmg: 10 },
-	{ atk: 20, crit_dmg: 10 },
-	{ atk: 10, hp: 10, cr: 10 },
-	{ atk: 10, attribute: 1, cr: 10 },
-	{ atk: 20, cr: 10 }
-]
 
-const disks_sub_stats = get_all_disks();
 
-function getTopDamageCombinations(disk_main_stats, disks_sub_stats, sheer_force) {
-    const top_list = [];
-    let minDamageInTop = -Infinity;
-    let minIndex = -1;
+
+
+function get_damage_by_stats (main_stats, sub_stats) {
+	const current_stats = mergeStats(main_stats, sub_stats);
+	const sheer_force_results = sheer_force_damage(current_stats);
+	return { stats: current_stats, ...sheer_force_results, main_stats, sub_stats, };
+}	
+
+function getTopDamageCombinations() {
+	const disk_main_stats = [
+		{ hp: 30 },
+		{ hp: 20, attribute: 1 },
+		{ hp: 20, atk: 10 },
+		{ hp: 20, crit_dmg: 10 },
+		{ hp: 10, attribute: 1, crit_dmg: 10 },
+		{ hp: 10, atk: 10, crit_dmg: 10 },
+		{ hp: 20, cr: 10 },
+		{ hp: 10, attribute: 1, cr: 10 },
+		{ hp: 10, atk: 10, cr: 10 },
+		{ atk: 10, hp: 20 },
+		{ atk: 10, attribute: 1, hp: 10 },
+		{ atk: 20, hp: 10 },
+		{ atk: 10, hp: 10, crit_dmg: 10 },
+		{ atk: 10, attribute: 1, crit_dmg: 10 },
+		{ atk: 20, crit_dmg: 10 },
+		{ atk: 10, hp: 10, cr: 10 },
+		{ atk: 10, attribute: 1, cr: 10 },
+		{ atk: 20, cr: 10 }
+	];
+
+	const disks_sub_stats = get_all_disks();
+
+	const top_list = [];
 
     for (const main_stats of disk_main_stats) {
         for (const sub_stats of disks_sub_stats) {
-            // Объединяем характеристики
-            const current_stats = mergeStats(main_stats, sub_stats);
-            
-            // Вычисляем урон
-            const sheer_force_results = sheer_force(current_stats);
-            const damage = sheer_force_results.damage;
 
-            // Добавляем в топ если есть место или урон больше минимального в топе
-			const new_element = { stats: current_stats, ...sheer_force_results, main_stats, sub_stats };
+			top_list.push(get_damage_by_stats(main_stats, sub_stats));
 
-			top_list.push(new_element);
-
-            // if (top_list.length < 50) {
-            //     top_list.push(new_element);
-                
-            //     // Обновляем минимальное значение в топе
-            //     if (damage < minDamageInTop) {
-            //         minDamageInTop = damage;
-            //         minIndex = top_list.length - 1;
-            //     } else if (minDamageInTop === -Infinity) {
-            //         minDamageInTop = damage;
-            //         minIndex = 0;
-            //     }
-            // } 
-            // else if (damage > minDamageInTop) {
-            //     // Заменяем слабейший элемент в топе
-            //     top_list[minIndex] = new_element;
-                
-            //     // Находим новый минимальный урон в топе
-            //     minDamageInTop = top_list[0].damage;
-            //     minIndex = 0;
-                
-            //     for (let i = 1; i < top_list.length; i++) {
-            //         if (top_list[i].damage < minDamageInTop) {
-            //             minDamageInTop = top_list[i].damage;
-            //             minIndex = i;
-            //         }
-            //     }
-            // }
         }
     }
 
@@ -198,22 +171,15 @@ function getTopDamageCombinations(disk_main_stats, disks_sub_stats, sheer_force)
     return top_list.sort((a, b) => b.damage - a.damage).slice(0, 50);
 }
 
-// Пример использования:
-const topCombinations = getTopDamageCombinations(
-    disk_main_stats,
-    disks_sub_stats,
-    sheer_force_damage
-);
-
 const convert_stats_to_text = (stats) => {
 	let result = [];
 	for(let [statName, statValue] of Object.entries(stats) ) {
 		switch(statName) {
 			case 'atk':
-				result.push(` - АТК%: ${statValue}`);
+				result.push(` - АТК%: ${(statValue).toFixed(0)}`);
 				break;
 			case 'hp':
-				result.push(` - HP%: ${statValue}`);
+				result.push(` - HP%: ${(statValue).toFixed(0)}`);
 				break;
 			case 'cr':
 				result.push(` - КШ: ${(statValue * 100).toFixed(0)}`);
@@ -221,8 +187,11 @@ const convert_stats_to_text = (stats) => {
 			case 'crit_dmg':
 				result.push(` - КУ: ${(statValue * 100).toFixed(0)}`);
 				break;
+			case 'sheer_force_total':
+				result.push(` - Sheerforce: ${(statValue).toFixed(0)}`);
+				break;
 			case 'attribute':
-				result.push(` - Атрибут: ${statValue * 100}%`);
+				result.push(` - Атрибут: ${statValue * 100} %`);
 				break;
 		}
 	}
@@ -253,11 +222,27 @@ const convert_points_to_text = (points) => {
 	return result.join('\n');
 }
 
-console.log("Топ комбинаций по урону:");
-topCombinations.forEach((v, index) => {
-    console.log(`#${index + 1}:`)
-	console.log(`Урон = ${v.damage}`)
-	console.log(`Характеристики = \n${convert_stats_to_text(v.stats)}`);
-	console.log(`Мейн статы = \n${convert_points_to_text(v.main_stats)}`);
-	console.log(`Саб статы = \n${convert_points_to_text(v.sub_stats)}`);
-});
+const out_results = (results) => {
+	results.forEach((v, index) => {
+		console.log(`#${index + 1}:`)
+		console.log(`Урон = ${v.damage}`)
+		console.log(`Характеристики = \n${convert_stats_to_text(v.stats)}`);
+		console.log(`[Проки] Мейн статы = \n${convert_points_to_text(v.main_stats)}`);
+		console.log(`[Проки] Саб статы = \n${convert_points_to_text(v.sub_stats)}`);
+		console.log(v);
+	});
+}
+
+const get_info_by_disk = (main_stats, sub_stats) => {
+	const results = get_damage_by_stats(main_stats, sub_stats);
+	out_results([results]);
+}
+
+get_info_by_disk(
+	{ hp: 10, attribute: 1, crit_dmg: 10 },
+	{ atk: 6, hp: 6, cr: 17, crit_dmg: 19 }
+);
+
+// const topCombinations = getTopDamageCombinations();
+// console.log("Топ комбинаций по урону:");
+// out_results(topCombinations)
