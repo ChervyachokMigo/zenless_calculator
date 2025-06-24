@@ -16,6 +16,7 @@ module.exports = {
 			mindscape: check_number(values.agent_mindscape), 
 			skill_levels: levels_12,
 			ATK: check_number(values.agent_atk),
+			AP: check_number(values.agent_ap),
 			crit_chance: check_number(values.agent_crit_rate)/100,
 			crit_damage: check_number(values.agent_crit_dmg)/100,
 			PEN: check_number(values.agent_pen),
@@ -36,6 +37,7 @@ module.exports = {
 	get_effects_stats: (values) => {
 		return remove_zero({
 			ATK: check_number(values.effects_atk),
+			AP: check_number(values.effects_ap),
 			crit_chance: check_number(values.effects_crit_rate)/100,
 			crit_damage: check_number(values.effects_crit_dmg)/100,
 			atribute_bonus_damage: remove_zero({
@@ -54,6 +56,7 @@ module.exports = {
             agent_mindscape: values.mindscape,
             agent_skill_levels: values.skill_levels,
             agent_atk: check_number(values.ATK),
+			agent_ap: check_number(values.AP),
             agent_crit_rate: check_number(values.crit_chance) * 100,
             agent_crit_dmg: check_number(values.crit_damage) * 100,
             agent_pen: check_number(values.PEN),

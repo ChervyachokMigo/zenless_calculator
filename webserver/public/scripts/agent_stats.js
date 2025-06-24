@@ -23,6 +23,7 @@ const set_agent_stats = async (agent_idx) => {
 	agents[agent_idx] = request_args;
 
 	const atk = request_args.agent_atk? request_args.agent_atk : '0';
+	const ap = request_args.agent_ap? request_args.agent_ap : '0';
 	const crit_rate = request_args.agent_crit_rate? request_args.agent_crit_rate + '%' : '0';
 	const crit_dmg = request_args.agent_crit_dmg? request_args.agent_crit_dmg + '%' : '0';
 
@@ -33,6 +34,7 @@ const set_agent_stats = async (agent_idx) => {
 		<div class="name">${agent_names[request_args.agent_name]}</div>
 		<div class="stats">
 			<div class="atk"><div class="Name">ATK</div><div class="Value">${atk}</div></div>
+			<div class="ap"><div class="Name">AP</div><div class="Value">${ap}</div></div>
 			<div class="crit_rate"><div class="Name">Crit Rate</div><div class="Value">${crit_rate}</div></div>
 			<div class="crit_dmg"><div class="Name">Crit DMG</div><div class="Value">${crit_dmg}</div></div>
 			${insert_attribute_div('attribute_electric', 'Attribute Electric', request_args.agent_attribute_electric)}

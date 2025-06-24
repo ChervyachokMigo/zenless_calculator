@@ -55,7 +55,7 @@ const _this = module.exports = {
 		agent_stats.skills_levels = levels;
 	},
 
-	set_stats_effect: ({ crit_chance, crit_damage, ATK, atribute_bonus_damage }) => {
+	set_stats_effect: ({ crit_chance, crit_damage, ATK, AP, atribute_bonus_damage }) => {
 		if (crit_chance) {
 			agent_stats.crit_chance += crit_chance;
 		}
@@ -64,6 +64,9 @@ const _this = module.exports = {
         }
 		if (ATK) {
             agent_stats.ATK += ATK;
+        }
+		if (AP) {
+            agent_stats.AP += AP;
         }
 		if (atribute_bonus_damage) {
 			Object.entries(atribute_bonus_damage).map(([key, value]) => {

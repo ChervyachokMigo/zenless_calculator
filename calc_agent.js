@@ -59,6 +59,6 @@ module.exports = ( ) => {
 		results.push(skill_results);
 	}
 
-	add_results(results);
+	add_results({ skills: results, anomaly: calculate_damage({ ...agent_stats, element_type: agent_data.element_type, damage_type: damage_types.anomaly }) });
 
 }

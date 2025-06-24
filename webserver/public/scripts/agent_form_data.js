@@ -3,6 +3,7 @@ const get_agent_form_data = () => {
 		agent_name: 		$('#agent_name').val(),
 		agent_mindscape: 	$('#agent_mindscape').val(),
         agent_atk: 			$('#agent_atk').val(),
+		agent_ap: 		$('#agent_ap').val(),
 		agent_crit_rate: 	$('#agent_crit_rate').val(),
         agent_crit_dmg: 	$('#agent_crit_dmg').val(),
         agent_pen: 			$('#agent_pen').val(),
@@ -26,6 +27,7 @@ const fill_agent_form_data = (values) => {
 	set_defined_value('#agent_name', values.agent_name);
 	set_defined_value('#agent_mindscape', values.agent_mindscape);
 	set_defined_value('#agent_atk', values.agent_atk);
+	set_defined_value('#agent_ap', values.agent_ap);
 	set_defined_value('#agent_crit_rate', values.agent_crit_rate);
 	set_defined_value('#agent_crit_dmg', values.agent_crit_dmg);
 	set_defined_value('#agent_pen', values.agent_pen);

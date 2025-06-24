@@ -1,3 +1,4 @@
+const compare_anomaly = require("./compare_anomaly");
 const compare_damage = require("./compare_damage");
 
 const results = [];
@@ -12,8 +13,9 @@ module.exports = {
             console.error('Not enough results to compare.');
             return null;
         }
-		
-        return compare_damage(results[0], results[1]);
+
+        return { skills: compare_damage(results[0].skills, results[1].skills), 
+			anomaly: compare_anomaly(results[0].anomaly, results[1].anomaly)}
 	},
 
 	clear_results: () => {

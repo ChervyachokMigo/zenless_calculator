@@ -1,6 +1,7 @@
 const { element_type } = require("../elements");
 
 module.exports = {
+	element_type: element_type.electric,
 	skill: {
 		basic_attack:
 			[

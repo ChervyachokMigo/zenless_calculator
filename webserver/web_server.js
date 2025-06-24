@@ -86,7 +86,7 @@ module.exports = {
 			
 			const result = compare_results();
 
-			res.send( result );
+			res.send({ skills: result.skills, anomaly: result.anomaly });
 		});
 
 		web_app.post('/save_preset',async (req, res) => {

@@ -2,6 +2,7 @@ let effects = {}
 
 const effects_names = {
 	effects_atk: 'ATK',
+	effects_ap: 'AP',
     effects_crit_rate: 'Crit Rate',
     effects_crit_dmg: 'Crit Damage',
     effects_attribute_electric: 'Attribute Electric',
@@ -14,6 +15,7 @@ const effects_names = {
 const get_effects_form_data = () => {
 	return {
         effects_atk: 			$('#effects_atk').val(),
+		effects_ap: 		$('#effects_ap').val(),
 		effects_crit_rate: 		$('#effects_crit_rate').val(),
         effects_crit_dmg: 		$('#effects_crit_dmg').val(),
 		effects_attribute_electric: 	$('#effects_attribute_electric').val(),
@@ -38,6 +40,7 @@ const set_effects = () => {
 		<div class="title">Effects stats</div>
 		<div class="stats">
 			${div_by_value('effects_atk', effects.effects_atk, '')}
+			${div_by_value('effects_ap', effects.effects_ap, '')}
 			${div_by_value('effects_crit_rate', effects.effects_crit_rate)}
 			${div_by_value('effects_crit_dmg', effects.effects_crit_dmg)}
 			${div_by_value('effects_attribute_electric', effects.effects_attribute_electric)}

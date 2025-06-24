@@ -42,12 +42,12 @@ const xisuan = {
 }
 
 const buffs = {
-	atk: 1200,
+	atk: 0,
 	cr: 0,
-	crit_dmg: 0.25,
+	crit_dmg: 1.02,
 	hp: 0,
-	sheerforce: 0,
-	damagebonus: 0
+	sheerforce: 720,
+	damagebonus: 0.3
 }
 
 
@@ -229,7 +229,7 @@ const out_results = (results) => {
 		console.log(`Характеристики = \n${convert_stats_to_text(v.stats)}`);
 		console.log(`[Проки] Мейн статы = \n${convert_points_to_text(v.main_stats)}`);
 		console.log(`[Проки] Саб статы = \n${convert_points_to_text(v.sub_stats)}`);
-		console.log(v);
+		//console.log(v);
 	});
 }
 

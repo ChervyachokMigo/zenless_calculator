@@ -154,6 +154,19 @@ module.exports = {
 				return result;
 
 			case damage_types.anomaly:
+				console.log(atacker_stats);
+				console.log(base_damage , 
+					anomaly_proficiency_multiplier , anomaly_level_multiplier , 
+					damage_bonus_multiplier ,
+					defense_multiplier , resistance_multiplier , 
+					damage_taken_multiplier , 
+					stun_multiplier)
+					console.log(base_damage * 
+					anomaly_proficiency_multiplier * anomaly_level_multiplier * 
+					damage_bonus_multiplier *
+					defense_multiplier * resistance_multiplier * 
+					damage_taken_multiplier * 
+					stun_multiplier)
 				return base_damage * 
 					anomaly_proficiency_multiplier * anomaly_level_multiplier * 
 					damage_bonus_multiplier *

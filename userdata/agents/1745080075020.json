@@ -1,0 +1,19 @@
+{
+    "name": "123",
+    "values": {
+        "agent_name": "miyabi",
+        "agent_mindscape": 1,
+        "agent_skill_levels": [
+            12,
+            12,
+            12,
+            12,
+            12
+        ],
+        "agent_atk": 2190,
+        "agent_crit_rate": 75,
+        "agent_crit_dmg": 120,
+        "agent_pen": 18,
+        "agent_attribute_electric": 30
+    }
+}

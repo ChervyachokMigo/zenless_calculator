@@ -18,8 +18,11 @@ const make_result_div = (val) => {
 const compare_agents = async () => {
 	if (agents.first.agent_name && agents.second.agent_name) {
 		const result = await post({ url_path: 'compare_agents', args: { agents, effects } });
-		$('.results').html(result.texts.map( v => v.map( val => make_result_div(val)).join('')).join('') );
-		console.log(result);
+		$('.results').html(
+			make_result_div(result.anomaly.text) + 
+			result.skills.texts.map( v => v.map( val => make_result_div(val)).join('')).join('') 
+		);
+		
 	} else {
 		$('.results').html('<div class="results_error">Ошибка: Отсутствует агент</div>');
 	}
